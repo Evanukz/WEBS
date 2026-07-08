@@ -1,0 +1,14 @@
+node_modules/
+/yamskis/node_modules/
+/server/node_modules/
+dist/
+yamskis/dist/
+.env
+.env.local
+.env.*
+npm-debug.log
+.DS_Store
+.vscode/
+.idea/
+public/products/*.jpg
+*.log
