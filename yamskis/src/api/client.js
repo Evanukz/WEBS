@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { demoProducts } from '../data/catalog.js';
 
+const apiBaseUrl = import.meta.env.VITE_API_URL;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '',
+  baseURL: apiBaseUrl,
   withCredentials: true
 });
 
@@ -37,7 +39,7 @@ export async function apiMe() {
 
 export async function apiProducts({ q, category, flash }) {
   // If no backend API is configured, return local demo products as a fallback.
-  const useLocal = !import.meta.env.VITE_API_URL;
+  const useLocal = !apiBaseUrl;
   if (useLocal) {
     let products = demoProducts.slice();
     if (q) products = products.filter((p) => p.title.toLowerCase().includes(String(q).toLowerCase()));
@@ -60,7 +62,7 @@ export async function apiProducts({ q, category, flash }) {
 }
 
 export async function apiProductById(productId) {
-  const useLocal = !import.meta.env.VITE_API_URL;
+  const useLocal = !apiBaseUrl;
   if (useLocal) {
     const product = demoProducts.find((p) => p._id === productId) || demoProducts[0];
     return { product };
