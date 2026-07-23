@@ -2,6 +2,7 @@
   "name": "yamskis-workspace",
   "private": true,
   "scripts": {
+    "build": "npm --prefix yamskis run build",
     "prestart": "npm --prefix yamskis run build",
     "start": "npm --prefix server start"
   }

@@ -82,6 +82,54 @@ export default function App() {
                 </RequireAuth>
               }
             />
+            <Route
+              path="/admin/products"
+              element={
+                <RequireAuth adminOnly>
+                  <AdminDashboardPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/orders"
+              element={
+                <RequireAuth adminOnly>
+                  <AdminDashboardPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/customers"
+              element={
+                <RequireAuth adminOnly>
+                  <AdminDashboardPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/analytics"
+              element={
+                <RequireAuth adminOnly>
+                  <AdminDashboardPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/payments"
+              element={
+                <RequireAuth adminOnly>
+                  <AdminDashboardPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/settings"
+              element={
+                <RequireAuth adminOnly>
+                  <AdminDashboardPage />
+                </RequireAuth>
+              }
+            />
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

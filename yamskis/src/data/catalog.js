@@ -21,7 +21,7 @@ export const demoProducts = [
     ratingCount: 184,
     stock: 24,
     isFlashSale: true,
-    images: ['/products/demo-1.jpg'],
+    images: ['https://source.unsplash.com/900x900/?smartphone-5g&sig=1'],
     description: 'A flagship-style phone with a bright display, all-day battery, and fast charging.'
   },
   {
@@ -35,7 +35,7 @@ export const demoProducts = [
     ratingCount: 92,
     stock: 11,
     isFlashSale: false,
-    images: ['/products/demo-2.jpg'],
+    images: ['https://source.unsplash.com/900x900/?laptop-macbook-air&sig=2'],
     description: 'Slim productivity laptop tuned for creators, students, and remote work.'
   },
   {
@@ -49,7 +49,7 @@ export const demoProducts = [
     ratingCount: 246,
     stock: 60,
     isFlashSale: true,
-    images: ['/products/demo-3.jpg'],
+    images: ['https://source.unsplash.com/900x900/?streetwear-cargo-pants-outfit&sig=3'],
     description: 'A modern everyday fit with breathable fabric and relaxed tailoring.'
   },
   {
@@ -63,7 +63,7 @@ export const demoProducts = [
     ratingCount: 71,
     stock: 18,
     isFlashSale: false,
-    images: ['/products/demo-4.jpg'],
+    images: ['https://source.unsplash.com/900x900/?air-fryer-kitchen-appliance&sig=4'],
     description: 'Make crisp meals faster with an intuitive touch panel and healthy cooking presets.'
   },
   {
@@ -77,7 +77,7 @@ export const demoProducts = [
     ratingCount: 115,
     stock: 40,
     isFlashSale: true,
-    images: ['/products/demo-5.jpg'],
+    images: ['https://source.unsplash.com/900x900/?skincare-products-beauty&sig=5'],
     description: 'A daily skincare set for hydration, glow, and a cleaner routine.'
   },
   {
@@ -91,7 +91,7 @@ export const demoProducts = [
     ratingCount: 38,
     stock: 15,
     isFlashSale: false,
-    images: ['/products/demo-6.jpg'],
+    images: ['https://source.unsplash.com/900x900/?office-chair-ergonomic&sig=6'],
     description: 'Ergonomic support with a clean silhouette for long work sessions.'
   },
   {
@@ -105,7 +105,7 @@ export const demoProducts = [
     ratingCount: 68,
     stock: 35,
     isFlashSale: false,
-    images: ['/products/demo-7.jpg'],
+    images: ['https://source.unsplash.com/900x900/?mobile-phone&sig=7'],
     description: 'Affordable 5G phone with a bright display and solid battery life.'
   },
   {
@@ -119,7 +119,7 @@ export const demoProducts = [
     ratingCount: 54,
     stock: 8,
     isFlashSale: true,
-    images: ['/products/demo-8.jpg'],
+    images: ['https://source.unsplash.com/900x900/?laptop-workstation-pro&sig=8'],
     description: 'High-performance workstation for creators and power users.'
   },
   {
@@ -133,7 +133,7 @@ export const demoProducts = [
     ratingCount: 132,
     stock: 120,
     isFlashSale: false,
-    images: ['/products/demo-9.jpg'],
+    images: ['https://source.unsplash.com/900x900/?t-shirt-knit-fashion&sig=9'],
     description: 'Soft knit tee with a relaxed urban fit.'
   },
   {
@@ -147,7 +147,7 @@ export const demoProducts = [
     ratingCount: 29,
     stock: 22,
     isFlashSale: false,
-    images: ['/products/demo-10.jpg'],
+    images: ['https://source.unsplash.com/900x900/?desk-lamp-office-light&sig=10'],
     description: 'Adjustable desk lamp with warm-to-cool lighting presets.'
   },
   {
@@ -161,7 +161,7 @@ export const demoProducts = [
     ratingCount: 44,
     stock: 30,
     isFlashSale: false,
-    images: ['/products/demo-11.jpg'],
+    images: ['https://source.unsplash.com/900x900/?hand-blender-kitchen&sig=11'],
     description: 'Compact blender for smoothies and sauces.'
   },
   {
@@ -175,7 +175,7 @@ export const demoProducts = [
     ratingCount: 73,
     stock: 25,
     isFlashSale: true,
-    images: ['/products/demo-12.jpg'],
+    images: ['https://source.unsplash.com/900x900/?hair-care-silk-products&sig=12'],
     description: 'Complete kit for smooth, shiny hair.'
   },
   {
@@ -189,7 +189,7 @@ export const demoProducts = [
     ratingCount: 210,
     stock: 50,
     isFlashSale: false,
-    images: ['/products/demo-13.jpg'],
+    images: ['https://source.unsplash.com/900x900/?running-shoes-sneakers&sig=13'],
     description: 'Lightweight running shoes with breathable mesh and responsive cushioning.'
   },
   {
@@ -203,7 +203,7 @@ export const demoProducts = [
     ratingCount: 60,
     stock: 200,
     isFlashSale: false,
-    images: ['/products/demo-14.jpg'],
+    images: ['https://source.unsplash.com/900x900/?nuts-seeds-dried-fruit-snack&sig=14'],
     description: 'A mix of nuts, seeds, and dried fruits for a healthy snack.'
   }
 ];
@@ -249,6 +249,18 @@ export function getDemoProductById(productId) {
     if (counts[p.category] !== undefined) counts[p.category]++;
   });
 
+  const initialCounts = { ...counts };
+  const categoryImageMap = {
+    Phones: ['https://source.unsplash.com/900x900/?smartphone&sig=100', 'https://source.unsplash.com/900x900/?mobile-phone&sig=101'],
+    Computing: ['https://source.unsplash.com/900x900/?laptop&sig=102', 'https://source.unsplash.com/900x900/?computer&sig=103'],
+    Fashion: ['https://source.unsplash.com/900x900/?fashion-clothing&sig=104', 'https://source.unsplash.com/900x900/?tshirt&sig=105', 'https://source.unsplash.com/900x900/?beauty&sig=106', 'https://source.unsplash.com/900x900/?hair-care&sig=107'],
+    'Home & Office': ['https://source.unsplash.com/900x900/?office-chair&sig=108', 'https://source.unsplash.com/900x900/?desk-lamp&sig=109'],
+    Appliances: ['https://source.unsplash.com/900x900/?air-fryer&sig=110', 'https://source.unsplash.com/900x900/?blender&sig=111'],
+    Beauty: ['https://source.unsplash.com/900x900/?skincare&sig=112', 'https://source.unsplash.com/900x900/?hair-products&sig=113'],
+    Sports: ['https://source.unsplash.com/900x900/?running-shoes&sig=114', 'https://source.unsplash.com/900x900/?snack-food&sig=115'],
+    Groceries: ['https://source.unsplash.com/900x900/?snack-food&sig=116', 'https://source.unsplash.com/900x900/?running-shoes&sig=117']
+  };
+
   let genCounter = 1;
   categories.forEach((cat) => {
     while (counts[cat] < desiredPerCategory) {
@@ -256,6 +268,10 @@ export function getDemoProductById(productId) {
       const id = `gen-${cat.replace(/\s+/g, '-')}-${idx}`;
       const price = 15000 + ((genCounter * 1739) % 200000);
       const ratingAvg = Number((3 + (genCounter % 20) / 10).toFixed(1));
+      const imageSet = categoryImageMap[cat] || ['/products/placeholder.jpg'];
+      const generatedIndex = counts[cat] - (initialCounts[cat] || 0);
+      const imagePath = imageSet[generatedIndex % imageSet.length];
+
       demoProducts.push({
         _id: id,
         title: `${cat} Item ${idx}`,
@@ -267,7 +283,7 @@ export function getDemoProductById(productId) {
         ratingCount: 5 + (genCounter % 120),
         stock: 5 + (genCounter % 80),
         isFlashSale: genCounter % 7 === 0,
-        images: ['/products/placeholder.jpg'],
+        images: [imagePath],
         description: `Demo ${cat.toLowerCase()} product generated for the catalog.`
       });
       counts[cat]++;
@@ -278,56 +294,61 @@ export function getDemoProductById(productId) {
 
 // Assign explicit names and images for phone and computing products so titles match the image type.
 (function assignDeviceImages() {
+  const iphonePhoneImages = [
+    'https://source.unsplash.com/900x900/?iphone-smartphone&sig=200',
+    'https://source.unsplash.com/900x900/?apple-iphone&sig=201'
+  ];
+
   const phoneProducts = {
     'demo-1': {
       title: 'iPhone 15 Pro',
       brand: 'Apple',
-      image: '/products/demo-1.jpg'
+      image: 'https://source.unsplash.com/900x900/?iphone-15-pro&sig=150'
     },
     'demo-7': {
       title: 'iPhone 15',
       brand: 'Apple',
-      image: '/products/demo-7.jpg'
+      image: 'https://source.unsplash.com/900x900/?iphone-15&sig=151'
     },
     'gen-Phones-3': {
-      title: 'Apple MacBook Pro',
-      brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      title: 'Samsung Galaxy S24',
+      brand: 'Samsung',
+      image: 'https://source.unsplash.com/900x900/?samsung-galaxy-smartphone&sig=152'
     },
     'gen-Phones-4': {
       title: 'iPhone 14',
       brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      image: iphonePhoneImages[0]
     },
     'gen-Phones-5': {
-      title: 'Apple MacBook',
-      brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      title: 'Google Pixel 8',
+      brand: 'Google',
+      image: 'https://source.unsplash.com/900x900/?google-pixel-phone&sig=153'
     },
     'gen-Phones-6': {
       title: 'iPhone 13',
       brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      image: iphonePhoneImages[1]
     },
     'gen-Phones-7': {
       title: 'iPhone 12 Pro',
       brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      image: iphonePhoneImages[0]
     },
     'gen-Phones-8': {
       title: 'iPhone SE',
       brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      image: iphonePhoneImages[1]
     },
     'gen-Phones-9': {
       title: 'iPhone 12',
       brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      image: iphonePhoneImages[0]
     },
     'gen-Phones-10': {
       title: 'iPhone 11',
       brand: 'Apple',
-      image: '/products/placeholder.jpg'
+      image: iphonePhoneImages[1]
     }
   };
 
@@ -335,12 +356,12 @@ export function getDemoProductById(productId) {
     'demo-2': {
       title: 'MacBook Air M2',
       brand: 'Apple',
-      image: '/products/demo-2.jpg'
+      image: 'https://source.unsplash.com/900x900/?macbook-air-laptop&sig=160'
     },
     'demo-8': {
       title: 'MacBook Pro 16',
       brand: 'Apple',
-      image: '/products/demo-8.jpg'
+      image: 'https://source.unsplash.com/900x900/?macbook-pro&sig=161'
     }
   };
 
