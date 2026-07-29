@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 import Navbar from '../components/layout/Navbar.jsx';
 import Footer from '../components/layout/Footer.jsx';
-import placeholderImage from '../utils/imagePlaceholder.js';
+import placeholderImage, { imgFallback } from '../utils/imagePlaceholder.js';
 import { CartContext } from '../state/CartContext.jsx';
 import { AuthContext } from '../state/AuthContext.jsx';
 import { categories, money } from '../data/catalog.js';
@@ -42,7 +42,7 @@ export default function CartPage() {
             ) : (
               cart.map((item) => (
                 <div key={item.productId} className="flex flex-col gap-4 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-slate-100 md:flex-row md:items-center">
-                  <img src={item.image || placeholderImage(item.title || 'Product')} alt={item.title} className="h-24 w-24 rounded-2xl object-cover" />
+                  <img src={item.image || placeholderImage(item.title || 'Product')} alt={item.title} className="h-24 w-24 rounded-2xl object-cover" onError={imgFallback(item.title || 'Product')} />
                   <div className="flex-1">
                     <div className="text-base font-black text-slate-950">{item.title}</div>
                     <div className="mt-1 text-sm font-semibold text-brand-700">{money(item.price)}</div>

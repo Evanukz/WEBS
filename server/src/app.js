@@ -15,7 +15,18 @@ import { adminRouter } from './routes/admin.routes.js';
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      imgSrc: ["'self'", "data:", "https://images.unsplash.com", "https://placehold.co"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      fontSrc: ["'self'", "data:"],
+      connectSrc: ["'self'", "http://localhost:5000", "http://127.0.0.1:5000"],
+    }
+  }
+}));
 const clientOrigin = process.env.CLIENT_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173';
 const allowedOrigins = clientOrigin.split(',').map((origin) => origin.trim()).filter(Boolean);
 app.use(cors({

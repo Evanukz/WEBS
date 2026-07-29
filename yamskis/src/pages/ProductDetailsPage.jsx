@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 import Navbar from '../components/layout/Navbar.jsx';
 import Footer from '../components/layout/Footer.jsx';
-import placeholderImage from '../utils/imagePlaceholder.js';
+import placeholderImage, { imgFallback } from '../utils/imagePlaceholder.js';
 import { CartContext } from '../state/CartContext.jsx';
 import { WishlistContext } from '../state/WishlistContext.jsx';
 import { AuthContext } from '../state/AuthContext.jsx';
@@ -138,7 +138,7 @@ export default function ProductDetailsPage() {
       <main className="mx-auto max-w-[96rem] px-4 py-6 lg:px-6 xl:px-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
           <section className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-100">
-            <img src={product.images?.[0] || placeholderImage(product.title || product.category || 'Product')} alt={product.title} className="h-[420px] w-full object-cover" />
+            <img src={product.images?.[0] || placeholderImage(product.title || product.category || 'Product')} alt={product.title} className="h-[420px] w-full object-cover" onError={imgFallback(product.title || product.category || 'Product')} />
           </section>
 
           <section className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
@@ -287,7 +287,7 @@ export default function ProductDetailsPage() {
           <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
             {related.map((item) => (
               <Link key={item._id} to={`/product/${item._id}`} className="rounded-2xl border border-slate-100 p-3 transition hover:-translate-y-0.5 hover:shadow-md">
-                <img src={item.images?.[0] || placeholderImage(item.title || item.category || 'Product')} alt={item.title} className="aspect-[4/3] w-full rounded-xl object-cover" />
+                <img src={item.images?.[0] || placeholderImage(item.title || item.category || 'Product')} alt={item.title} className="aspect-[4/3] w-full rounded-xl object-cover" onError={imgFallback(item.title || item.category || 'Product')} />
                 <div className="mt-3 text-sm font-extrabold text-slate-950">{item.title}</div>
                 <div className="mt-1 text-sm font-black text-brand-700">{money(item.price)}</div>
               </Link>

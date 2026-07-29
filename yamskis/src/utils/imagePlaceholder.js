@@ -10,3 +10,18 @@ export default function placeholderImage(label = 'Product', width = 900, height 
   </svg>`;
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
+
+/**
+ * Reusable onError handler for <img> tags.
+ * When an image fails to load, it falls back to an inline SVG placeholder.
+ * Usage: <img src={url} onError={imgFallback(product?.title || 'Product')} />
+ */
+export function imgFallback(label = 'Product') {
+  const fallbackSrc = placeholderImage(label);
+  return function handleImgError(e) {
+    if (e.target && e.target.src !== fallbackSrc) {
+      e.target.src = fallbackSrc;
+    }
+  };
+}
+

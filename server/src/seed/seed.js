@@ -28,7 +28,7 @@ function getImageKeywordFromTitle(title) {
   if (titleLower.includes('hair') || titleLower.includes('silk')) return 'hair-care-products';
   if (titleLower.includes('shirt') || titleLower.includes('tee') || titleLower.includes('knit')) return 't-shirt-fashion';
   if (titleLower.includes('streetwear') || titleLower.includes('cargo') || titleLower.includes('coat') || titleLower.includes('jacket')) return 'fashion-clothing-outfit';
-  return String(suffix || 'product').trim().replace(/&/g, 'and');
+  return 'product';
 }
 
 function img(seed, suffix) {
@@ -39,7 +39,7 @@ function img(seed, suffix) {
 
   const keyword = getImageKeywordFromTitle(suffix);
   const query = encodeURIComponent(keyword);
-  return `https://source.unsplash.com/900x900/?${query}&sig=${seed}`;
+  return `https://images.unsplash.com/900x900/?${query}&sig=${seed}`;
 }
 
 function buildProductImages(seed, title, category) {
@@ -49,17 +49,17 @@ function buildProductImages(seed, title, category) {
   if (titleLower.includes('family essentials')) {
     return [
       'https://www.zenmart.co.ug/storage/family-essentials-1.jpg',
-      'https://source.unsplash.com/900x900/?family-essentials-grocery-basket&sig=1001',
-      'https://source.unsplash.com/900x900/?household-essentials-store&sig=1002'
+      'https://images.unsplash.com/900x900/?family-essentials-grocery-basket&sig=1001',
+      'https://images.unsplash.com/900x900/?household-essentials-store&sig=1002'
     ];
   }
 
   const keyword = getImageKeywordFromTitle(titleText);
   const baseQuery = encodeURIComponent(keyword);
   return [
-    `https://source.unsplash.com/900x900/?${baseQuery}&sig=${seed}`,
-    `https://source.unsplash.com/900x900/?${encodeURIComponent(`${keyword} product view`)}&sig=${seed + 1}`,
-    `https://source.unsplash.com/900x900/?${encodeURIComponent(`${keyword} lifestyle`)}&sig=${seed + 2}`
+    `https://images.unsplash.com/900x900/?${baseQuery}&sig=${seed}`,
+    `https://images.unsplash.com/900x900/?${encodeURIComponent(`${keyword} product view`)}&sig=${seed + 1}`,
+    `https://images.unsplash.com/900x900/?${encodeURIComponent(`${keyword} lifestyle`)}&sig=${seed + 2}`
   ];
 }
 
@@ -207,4 +207,3 @@ async function seedIfEmpty() {
 }
 
 export { seedIfEmpty };
-

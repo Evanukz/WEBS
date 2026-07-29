@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { FiHeart } from 'react-icons/fi';
-import placeholderImage from '../../utils/imagePlaceholder.js';
+import placeholderImage, { imgFallback } from '../../utils/imagePlaceholder.js';
 
 export default function ProductCard({ product, onToggleWishlist, wished = false }) {
-  const img = product?.images?.[0] || placeholderImage(product?.title || product?.category || 'Product');
+  const fallbackLabel = product?.title || product?.category || 'Product';
+  const img = product?.images?.[0] || placeholderImage(fallbackLabel);
   const price = product?.price ?? 0;
 
   return (
@@ -11,7 +12,7 @@ export default function ProductCard({ product, onToggleWishlist, wished = false 
       <div className="relative">
         <Link to={`/product/${product._id}`}>
           <div className="aspect-[4/3] overflow-hidden bg-slate-50">
-            <img src={img} alt={product.title} className="h-full w-full object-cover transition group-hover:scale-105" />
+            <img src={img} alt={product.title} className="h-full w-full object-cover transition group-hover:scale-105" onError={imgFallback(fallbackLabel)} />
           </div>
         </Link>
 
